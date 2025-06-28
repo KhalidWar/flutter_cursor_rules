@@ -135,3 +135,30 @@ Generate code, corrections, and refactorings that comply with the basic principl
 
 - Use the standard widget testing for flutter
 - Use integration tests for each api module.
+
+## Git Commit Message Guidelines
+
+### Conventional Commits
+
+- Use conventional commit format: `<type>[optional scope]: <description>`
+- Keep commit messages concise and within 60 characters for the subject line
+- Use lowercase letters for type and scope
+- Ensure commit messages are ready to be pasted into terminal without editing
+- When suggesting commits, provide the full `git commit -m` command
+
+### Commit Types
+
+- **feat**: A new feature for the user
+- **fix**: A bug fix for the user
+- **docs**: Changes to documentation
+- **style**: Formatting, missing semicolons, etc; no code change
+- **refactor**: Refactoring production code
+- **test**: Adding tests, refactoring test; no production code change
+- **chore**: Updating build tasks, package manager configs, etc; no production code change
+
+### Examples
+
+- `git commit -m "feat: add user authentication with Firebase"`
+- `git commit -m "fix: resolve null pointer exception in user profile"`
+- `git commit -m "docs: update README with installation instructions"`
+- `git commit -m "refactor: extract validation logic to utility class"`
