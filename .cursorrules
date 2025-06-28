@@ -8,7 +8,7 @@ Generate code, corrections, and refactorings that comply with the basic principl
 
 - Use English for all code and documentation.
 - Always declare the type of each variable and function (parameters and return value).
-- Avoid using any.
+- Avoid using dynamic.
 - Create necessary types.
 - Don't leave blank lines within a function.
 - One export per file.
@@ -26,9 +26,6 @@ Generate code, corrections, and refactorings that comply with the basic principl
 - Except for standard abbreviations like API, URL, etc.
 - Except for well-known abbreviations:
   - i, j for loops
-  - err for errors
-  - ctx for contexts
-  - req, res, next for middleware function parameters
 
 ### Functions
 
@@ -84,57 +81,58 @@ Generate code, corrections, and refactorings that comply with the basic principl
 - Write acceptance tests for each module.
 - Follow the Given-When-Then convention.
 
-## Specific to Flutter
+## Flutter General Guidelines
 
 ### Basic Principles
 
 - Use repository pattern for data persistence
-  - see cache if you need to cache data
 - Use controller pattern for business logic with Riverpod
 - Use Riverpod to manage state
-  - see keepAlive if you need to keep the state alive
-- Controller always takes methods as input and updates the UI state that effects the UI
-- Use extensions to manage reusable code
-- Use ThemeData to manage themes
-- Use constants to manage constants values
-- When a widget tree becomes too deep, it can lead to longer build times and increased memory usage. Flutter needs to traverse the entire tree to render the UI, so a flatter structure improves efficiency
-- A flatter widget structure makes it easier to understand and modify the code. Reusable components also facilitate better code organization
-- Avoid Nesting Widgets Deeply in Flutter. Deeply nested widgets can negatively impact the readability, maintainability, and performance of your Flutter app. Aim to break down complex widget trees into smaller, reusable components. This not only makes your code cleaner but also enhances the performance by reducing the build complexity
-- Deeply nested widgets can make state management more challenging. By keeping the tree shallow, it becomes easier to manage state and pass data between widgets
+- Use extensions for reusable code
+- Use ThemeData for themes
+- Use constants for constant values
+- Avoid deep widget nesting for better performance and readability
 - Break down large widgets into smaller, focused widgets
-- Utilize const constructors wherever possible to reduce rebuilds
+- Use const constructors to reduce rebuilds
 
 ### Widget Creation
 
-- Create standalone widget classes instead of helper methods that return widgets. This improves performance and code organization.
+- Always create separate widget classes, not helper methods that return widgets.
 
 ### Layout
 
-- Use the spacing property in Row and Column widgets to space out children instead of using SizedBox between widgets.
+- Use spacing property in Row and Column widgets, not SizedBox between widgets.
 
 ### Theme and Colors
 
-- Always use theme colors for text instead of hardcoded colors like Colors.white or Colors.black to ensure text is legible in both light and dark modes.
-- Use Theme.of(context).colorScheme properties like onPrimary, onSurface, onBackground, etc.
-- Use onPrimary for text on primary-colored backgrounds, onSurface for text on surface backgrounds, etc.
-- This ensures proper contrast and accessibility across different theme modes.
-- Always use `.withValues(alpha: value)` instead of the deprecated `.withOpacity(value)` method when adjusting color opacity.
+- Use theme colors, not hardcoded colors like Colors.white or Colors.black.
+- Use Theme.of(context).colorScheme properties: onPrimary, onSurface, onBackground.
+- Use `.withValues(alpha: value)` instead of deprecated `.withOpacity(value)`.
 
 ### Text Styling
 
-- Never create custom TextStyle objects and never set the fontSize property for text styles.
+- Never create custom TextStyle objects or set fontSize property.
 
 ### Command Execution Preferences
 
-- Let the user run Flutter analyze, Flutter build, and other Flutter/linter commands manually.
-- Do not automatically execute flutter analyze, flutter build, flutter run, or any linting commands.
-- Avoid using the --force flag in CLI commands.
-- Prefer using global FVM configuration instead of local per-project setup.
+- Let the user run Flutter commands manually.
+- Do not automatically execute flutter analyze, flutter build, flutter run, or linting commands.
+- Avoid using --force flag in CLI commands.
 
 ### Testing
 
-- Use the standard widget testing for flutter
-- Use integration tests for each api module.
+- Use the standard widget testing for Flutter
+- Use integration tests for each API module
+- Test widgets with `testWidgets()` and use `WidgetTester`
+- Use `find.byType()`, `find.text()`, and `find.byKey()` for locating widgets
+- Use `pumpWidget()` to render widgets and `pump()` to trigger rebuilds
+- Use `expect()` with `findsOneWidget`, `findsNothing`, or `findsNWidgets`
+- Test user interactions with `tap()`, `enterText()`, and `drag()`
+- Use `Key` widgets for testing complex widget trees
+- Mock dependencies with `mockito` or manual mocks
+- Test different screen sizes with `binding.window.physicalSizeTestValue`
+- Use `pumpAndSettle()` for animations and async operations
+- Group related tests with `group()` and use descriptive test names
 
 ## Git Commit Message Guidelines
 
