@@ -20,7 +20,6 @@ This repository provides coding guidelines and best practices for Flutter develo
 
 ### Flutter-Specific Guidelines
 
-- **State Management**: Riverpod patterns and controller architecture
 - **Widget Architecture**: Flat widget trees for better performance
 - **Theme Usage**: Proper theme colors for light/dark mode support
 - **Layout**: Modern Flutter layout techniques

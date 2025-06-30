@@ -8,7 +8,7 @@ Generate code, corrections, and refactorings that comply with the basic principl
 
 - Use English for all code and documentation.
 - Always declare the type of each variable and function (parameters and return value).
-- Avoid using dynamic.
+- Avoid using dynamic type.
 - Create necessary types.
 - Don't leave blank lines within a function.
 - One export per file.
@@ -86,8 +86,6 @@ Generate code, corrections, and refactorings that comply with the basic principl
 ### Basic Principles
 
 - Use repository pattern for data persistence
-- Use controller pattern for business logic with Riverpod
-- Use Riverpod to manage state
 - Use extensions for reusable code
 - Use ThemeData for themes
 - Use constants for constant values
